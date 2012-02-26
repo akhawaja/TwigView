@@ -72,7 +72,8 @@ function twig_fn_url_to($route, $params = '')
 	}
 	else
 	{
-		return URL::to_action($route, parse_str($params), false);
+        parse_str($params, $repl);
+		return URL::to_action($route, $repl, false);
 	}
 }
 
