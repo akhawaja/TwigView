@@ -61,5 +61,5 @@ but is not required.
 
 ## Thanks ##
 
-A special thank you to @michaelenger of [mustacheview](https://github.com/michaelenger/mustacheview.git) for the 
+A special thank you to @michaelenger of [mustacheview](https://github.com/michaelenger/mustacheview) for the 
 inspiration.
