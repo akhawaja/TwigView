@@ -66,9 +66,6 @@ class View extends Laravel\View
             // Include the Twig functions we wish to register.
             require_once 'twigfunctions.php';
 
-            // Call the Twig autoloader
-            \Twig_Autoloader::register();
-
             // Build the Twig object. By default, we will add the application views folder and the
             // bundle's views folder to the Twig loader.
             $loader = new \Twig_Loader_Filesystem(array(
