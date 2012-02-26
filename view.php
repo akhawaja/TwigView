@@ -32,6 +32,8 @@ class View extends Laravel\View
 
         if (file_exists($path))
         {
+            // If the view is from a bundle, remove the bundle separator from the view name, Otherwise,
+            // just use the view name and add the file extension.
             if (str_contains($view, '::'))
             {
                 $this->template = substr($view, strpos($view, '::') + 2, strlen($view)).$this->template_ext;
@@ -64,12 +66,12 @@ class View extends Laravel\View
         try
         {
             // Include the Twig functions we wish to register.
-            require_once 'twigfunctions.php';
+            require_once dirname(__FILE__).DS.'twigfunctions.php';
 
             // Include the Twig Autoloader
             require_once dirname(__FILE__).DS.'Twig/Autoloader.php';
 
-            // Register the Twig Autoloader
+            // Register the Twig Autoloader.
             \Twig_Autoloader::register();
 
             // Build the Twig object. By default, we will add the application views folder and the
