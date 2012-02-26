@@ -26,14 +26,21 @@ class View extends Laravel\View
     protected function path($view)
     {
         $view = str_replace('.', '/', $view);
-
         $this->bundle_root = $root = Laravel\Bundle::path(Laravel\Bundle::name($view)).'views';
 
         $path = $root.DS.Laravel\Bundle::element($view).$this->template_ext;
 
         if (file_exists($path))
         {
-            $this->template = substr($view, strpos($view, '::') + 2, strlen($view)).$this->template_ext;
+            if (str_contains($view, '::'))
+            {
+                $this->template = substr($view, strpos($view, '::') + 2, strlen($view)).$this->template_ext;
+            }
+            else
+            {
+                $this->template = $view.$this->template_ext;
+            }
+
             return $path;
         }
 

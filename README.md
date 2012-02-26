@@ -40,8 +40,8 @@ In the *application/config/application.php* file, replace the alias with the fol
 
 ## Usage ##
 
-You can use the View object in the same manner to the Laravel View object. Just keep in mind 
-that you are using Twig syntax inside your views.
+All your views must have the *.twig* file extension. You can use the TwigView\View object in the same 
+manner as the Laravel\View object. Just keep in mind that you are using Twig syntax inside your views.
 
 ## License ##
 
