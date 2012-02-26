@@ -1,7 +1,7 @@
 # TwigView - Laravel View Replacement #
 
 TwigView replaces the default Laravel View class with the 
-[Twig Template Engine](http://twig.sensiolabs.org/). 
+[Twig Template Engine](http://twig.sensiolabs.org/).
 
 ## Installation ##
 
@@ -58,3 +58,8 @@ If you use this software in a product, an acknowledgment in the product document
 but is not required.
 - Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 - This notice may not be removed or altered from any source distribution.
+
+## Thanks ##
+
+A special thank you to @michaelenger of [mustacheview](https://github.com/michaelenger/mustacheview.git) for the 
+inspiration.
