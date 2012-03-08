@@ -80,11 +80,15 @@ class View extends Laravel\View
                                                        path('app').'views', $this->bundle_root,
                                                   ));
 
+            // Load the Twig configuration.
+            $debug = Laravel\Config::get('TwigView::twig.debug');
+            $autoreload = Laravel\Config::get('TwigView::twig.autoreload');
+
             // Define the Twig environment.
             $twig_env = new \Twig_Environment($loader, array(
                                                             'cache' => path('storage').'views',
-                                                            'debug' => $_SERVER['LARAVEL_ENV'] == 'dev',
-                                                            'autoreload' => true,
+                                                            'debug' => $debug,
+                                                            'autoreload' => $autoreload,
                                                        ));
 
             // Register Laravel functions as Twig functions
