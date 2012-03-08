@@ -77,7 +77,7 @@ class View extends Laravel\View
             // Build the Twig object. By default, we will add the application views folder and the
             // bundle's views folder to the Twig loader.
             $loader = new \Twig_Loader_Filesystem(array(
-                                                       path('app').'views', $this->bundle_root,
+                                                       $this->bundle_root, path('app').'views',
                                                   ));
 
             // Load the Twig configuration.
