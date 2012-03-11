@@ -66,7 +66,12 @@ class View extends Laravel\View
         try
         {
             // Include the Twig functions we wish to register.
-            require_once dirname(__FILE__).DS.'twigfunctions.php';
+            $files = Laravel\Config::get('TwigView::twig.include');
+
+            foreach ($files as $file)
+            {
+                require_once $file;
+            }
 
             // Include the Twig Autoloader
             require_once dirname(__FILE__).DS.'Twig/Autoloader.php';
@@ -80,39 +85,33 @@ class View extends Laravel\View
                                                        $this->bundle_root, path('app').'views',
                                                   ));
 
-            // Load the Twig configuration.
+            // Load the Twig_Environment configuration.
+            $cache = Laravel\Config::get('TwigView::twig.cache');
             $debug = Laravel\Config::get('TwigView::twig.debug');
             $autoreload = Laravel\Config::get('TwigView::twig.autoreload');
+            $functions = Laravel\Config::get('TwigView::twig.functions', array());
+            $filters = Laravel\Config::get('TwigView::twig.filters', array());
 
             // Define the Twig environment.
             $twig_env = new \Twig_Environment($loader, array(
-                                                            'cache' => path('storage').'views',
+                                                            'cache' => $cache,
                                                             'debug' => $debug,
                                                             'autoreload' => $autoreload,
                                                        ));
 
-            // Register Laravel functions as Twig functions
-            $twig_env->addFunction(
-                'config', new \Twig_Function_Function('twig_fn_config', array('is_safe' => array('html'))));
-            $twig_env->addFunction('val', new \Twig_Function_Function('twig_fn_val', array('is_safe' => array('html'))));
-            $twig_env->addFunction('tr', new \Twig_Function_Function('twig_fn_tr', array('is_safe' => array('html'))));
-            $twig_env->addFunction('url_to', new \Twig_Function_Function('twig_fn_url_to', array('is_safe' => array('html'))));
-            $twig_env->addFunction(
-                'secure_url_to', new \Twig_Function_Function('twig_fn_secure_url_to', array('is_safe' => array('html'))));
-            $twig_env->addFunction(
-                'url_to_route', new \Twig_Function_Function('twig_fn_url_to_route', array('is_safe' => array('html'))));
-            $twig_env->addFunction(
-                'url_to_secure_route', new \Twig_Function_Function('twig_fn_url_to_secure_route', array('is_safe' => array('html'))));
-            $twig_env->addFunction('script', new \Twig_Function_Function('twig_fn_script', array('is_safe' => array('html'))));
-            $twig_env->addFunction('style', new \Twig_Function_Function('twig_fn_style', array('is_safe' => array('html'))));
-            $twig_env->addFunction('link', new \Twig_Function_Function('twig_fn_link', array('is_safe' => array('html'))));
-            $twig_env->addFunction(
-                'secure_link', new \Twig_Function_Function('twig_fn_secure_link', array('is_safe' => array('html'))));
-            $twig_env->addFunction('image', new \Twig_Function_Function('twig_fn_image', array('is_safe' => array('html'))));
-            $twig_env->addFunction('email', new \Twig_Function_Function('twig_fn_email', array('is_safe' => array('html'))));
+            // Register functions as Twig functions
+            foreach ($functions as $name => $value)
+            {
+                $params = isset($value['params']) ? $value['params'] : array();
+                $twig_env->addFunction($name, new \Twig_Function_Function($value['function'], $params));
+            }
 
-            // Register Laravel functions as Twig filters
-            $twig_env->addFilter('slugify', new \Twig_Filter_Function('twig_fn_slugify', array('is_safe' => array('html'))));
+            // Register filters as Twig filters
+            foreach ($filters as $name => $value)
+            {
+                $params = isset($value['params']) ? $value['params'] : array();
+                $twig_env->addFilter($name, new \Twig_Filter_Function($value['filter'], $params));
+            }
 
             print $twig_env->render($this->template, $this->data);
         }
