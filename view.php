@@ -113,7 +113,7 @@ class View extends Laravel\View
                 $twig_env->addFilter($name, new \Twig_Filter_Function($value['filter'], $params));
             }
 
-            print $twig_env->render($this->template, $this->data);
+            print $twig_env->render($this->template, $this->data());
         }
         catch (\Exception $e)
         {
