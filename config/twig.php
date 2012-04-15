@@ -2,9 +2,9 @@
 
 return array(
     // Twig_Environment configurations.
-    'cache' => false, // Set to `path('storage').'views'` if you want to use Twig caching
-    'debug' => false,
-    'autoreload' => false,
+    'cache' => path('storage').'views', // Set to `path('storage').'views'` if you want to use Twig caching
+    'debug' => true,
+    'autoreload' => true,
 
     // Additional files to include. Put things like Twig functions, filters, etc. here.
     'include' => array(dirname(__DIR__).DS.'twigfunctions.php'),
