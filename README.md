@@ -7,7 +7,7 @@ TwigView replaces the default Laravel View class with the
 
 1. Download the Source
 1. Register the Bundle with Laravel
-1. Replace the View alias
+1. Replace the View alias (optional)
 
 ### Download the Source ###
 
@@ -27,7 +27,7 @@ In the *application/bundles.php* file, register the TwigView bundle
 )
 ```
 
-### Replace the View alias ###
+### Replace the View alias (optional) ###
 
 In the *application/config/application.php* file, replace the alias with the following:
 
@@ -37,6 +37,8 @@ In the *application/config/application.php* file, replace the alias with the fol
     'View' => 'TwigView\\View',
 );
 ```
+
+If you leave the alias as-is, you can still call \TwigView\View in your controllers.
 
 ## Usage ##
 
