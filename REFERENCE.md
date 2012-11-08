@@ -147,3 +147,53 @@ Params:
 - $name: The name of the Input key
 - $default: The default value to use when the Input value is not found
 - e.g. {{ val('username', 'Anonymous') }}
+
+## Form Functions ##
+
+The following form helpers are included to make sure that building forms in twig views is as painless as possible.
+
+All functions take the same arguments as their `Laravel\Form` counterpart, you can find information on that at http://laravel.com/docs/views/forms, and in the form class API at http://laravel.com/api/class-Laravel.Form.html.
+
+```twig
+{#  Form::open() #}
+{{ form_open }}
+
+{# Form::open_secure() #}
+{{ form_open_secure() }}
+
+{# Form::open_for_files() #}
+{{ form_open_for_files() }}
+
+{# Form::open_secure_for_files #}
+{{ form_open_secure_for_files() }}
+
+{# Form::close() #}
+{{ form_close() }}
+
+{# Form::label() #}
+{{ form_label() }}
+
+{# Form::text() #}
+{{ form_text() }}
+
+{# Form::submit() #}
+{{ form_submit() }}
+
+{# Form::textarea() #}
+{{ form_textarea() }}
+
+{# Form::hidden() #}
+{{ form_hidden() }}
+
+{# Form::token() #}
+{{ form_token() }}
+
+{# Form::checkbox() #}
+{{ form_checkbox() }}
+
+{# Form::radio() #}
+{{ form_radio() }}
+
+{# Form::select #}
+{{ form_select() }}
+```
