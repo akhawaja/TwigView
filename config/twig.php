@@ -23,6 +23,21 @@ return array(
         'secure_link' => array('function' => 'twig_fn_secure_link', 'params' => array('is_safe' => array('html'))),
         'image' => array('function' => 'twig_fn_image', 'params' => array('is_safe' => array('html'))),
         'email' => array('function' => 'twig_fn_email', 'params' => array('is_safe' => array('html'))),
+        'form_open' => array('function' => 'twig_fn_form_open', 'params' => array('is_safe' => array('html'))),
+        'form_open_secure' => array('function' => 'twig_fn_form_open_secure', 'params' => array('is_safe' => array('html'))),
+        'form_open_for_files' => array('function' => 'twig_fn_form_open_for_files', 'params' => array('is_safe' => array('html'))),
+        'form_open_secure_for_files' => array('function' => 'twig_fn_form_open_secure_for_files', 'params' => array('is_safe' => array('html'))),
+        'form_close' => array('function' => 'twig_fn_form_close', 'params' => array('is_safe' => array('html'))),
+        'form_label' => array('function' => 'twig_fn_form_label', 'params' => array('is_safe' => array('html'))),
+        'form_text' => array('function' => 'twig_fn_form_text', 'params' => array('is_safe' => array('html'))),
+        'form_submit' => array('function' => 'twig_fn_form_submit', 'params' => array('is_safe' => array('html'))),
+        'form_textarea' => array('function' => 'twig_fn_form_textarea', 'params' => array('is_safe' => array('html'))),
+        'form_hidden' => array('function' => 'twig_fn_form_hidden', 'params' => array('is_safe' => array('html'))),
+        'form_token' => array('function' => 'twig_fn_form_token', 'params' => array('is_safe' => array('html'))),
+        'form_checkbox' => array('function' => 'twig_fn_form_checkbox', 'params' => array('is_safe' => array('html'))),
+        'form_radio' => array('function' => 'twig_fn_form_radio', 'params' => array('is_safe' => array('html'))),
+        'form_select' => array('function' => 'twig_fn_form_select', 'params' => array('is_safe' => array('html'))),
+
     ),
 
     // Twig filters. These are used in the Twig templates.
