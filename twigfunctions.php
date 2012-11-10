@@ -6,6 +6,7 @@ use Laravel\Input;
 use Laravel\Lang;
 use Laravel\Str;
 use Laravel\URL;
+use Laravel\Form;
 
 /**
  * Read and return a config value
@@ -293,6 +294,82 @@ function twig_fn_image($file, $alt = '', $params = '')
 function twig_fn_email($email)
 {
 	return HTML::email($email);
+}
+
+/**
+ * Laravel form API helpers - generate forms with even less Twig code!
+ *
+ * @see http://laravel.com/docs/views/forms
+ */
+
+function twig_fn_form_open($action = null, $method = 'POST', $attributes = array(), $https = FALSE)
+{
+	return Form::open($action, $method, $attributes, $https);
+}
+
+function twig_fn_form_open_secure($action = null, $method = 'POST', $attributes = array())
+{
+	return Form::open_secure($action, $method, $attributes);
+}
+
+function twig_fn_form_open_for_files($action = null, $method = 'POST', $attributes = array())
+{
+	return Form::open_for_files($action, $method, $attributes);
+}
+
+function twig_fn_form_open_secure_for_files($action = null, $method = 'POST', $attributes = array())
+{
+	return Form::open_secure_for_files($action, $method, $attributes);
+}
+
+function twig_fn_form_close()
+{
+	return Form::close();
+}
+
+function twig_fn_form_label($name, $text, $attributes = array())
+{
+	return Form::label($name, $text, $attributes);
+}
+
+function twig_fn_form_text($name, $value = null, $attributes = array())
+{
+	return Form::text($name, $value, $attributes);
+}
+
+function twig_fn_form_textarea($name, $value = null, $attributes = array())
+{
+	return Form::textarea($name, $value, $attributes);
+}
+
+function twig_fn_form_hidden($name, $value = null, $attributes = array())
+{
+	return Form::hidden($name, $value, $attributes);
+}
+
+function twig_fn_form_submit($text = 'Submit')
+{
+	return Form::submit($text);
+}
+
+function twig_fn_form_token()
+{
+	return Form::token();
+}
+
+function twig_fn_form_checkbox($name, $value = 1, $checked = false, $attributes = array())
+{
+	return Form::checkbox($name, $value, $checked, $attributes);
+}
+
+function twig_fn_form_radio($name, $value = 1, $checked = false, $attributes = array())
+{
+	return Form::radio($name, $value, $checked, $attributes);
+}
+
+function twig_fn_form_select($name, $options = array(), $selected = null, $attributes = array())
+{
+	return Form::select($name, $options, $selected, $attributes);
 }
 
 
